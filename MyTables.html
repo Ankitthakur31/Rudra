@@ -55,14 +55,17 @@
                         for(var i in tabledata){
                           var x=''
                           for (var j = 0; j < tabledata[i].certifications.length; j++) {
-                                  x += '<i>' + tabledata[i].certifications[j] + '</i> ' + '<br>'
+                                  if (tabledata[i].certifications[j] != "NA") {
+                                    x += '<i>' + tabledata[i].certifications[j] + '</i> ' + '<br>';
+                                  }
+
                                 }
                           tabledata.push(
                              html = '<tr>'+
+                             '<td>'+ tabledata[i].empId + '</td>' +
                                 '<td>'+ tabledata[i].Firstname + '</td>' +
                                 '<td>'+ tabledata[i].Lastname + '</td>' +
                                 '<td>'+ tabledata[i].email + '</td>' +
-                                '<td>'+ tabledata[i].empId + '</td>' +
                                 '<td>'+ x + '</td>' +
                               '</tr>' 
                                
@@ -233,13 +236,14 @@
           </table> -->
           <span data-bind="click: $root.getCustomerDetails()"></span>
           </script>
-          <table  id="example" class="table table-striped table-bordered " style="width:100%" >
+          <table  class="table table-striped table-bordered " style="width:100%" >
             <thead>
                 <tr >
+                    <th>empId</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Email</th>
-                    <th>empId</th>
+                    
                     <th>Certifications</th>
                     
 

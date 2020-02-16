@@ -437,12 +437,8 @@
         </div>
         <div class="modal-body">
           <div>
-            <div class="signup-form">
-              <form  class="dataform" method="post">
+              <form   method="post">         
                   
-                <div class="row">
-                </div>          
-                  </div>
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Employee Id" data-bind='value: empId' required="required">
                   </div>
@@ -456,7 +452,7 @@
                         <option value="a" >AWS</option>
                         <option value="b">Azure</option>
                          <option value="c">Gcp</option>
-                         <option value="d">Other</option>
+                         <!-- <option value="d">Other</option> -->
                       </select>
                       <select id="sel2" class="form-control" data-bind="value : certifications" >
                         <option value="none" data-option="a" selected disabled hidden> 
@@ -511,6 +507,7 @@
               </form>
             <!-- <div class="hint-text">Already have an account? <a href="#">Login here</a></div> -->
           </div>
+
           <script type="text/javascript">
             var sel1 = document.querySelector('#sel1');
             var sel2 = document.querySelector('#sel2');

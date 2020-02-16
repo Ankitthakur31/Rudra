@@ -55,15 +55,18 @@
                         for(var i in tabledata){
                           var x=''
                           for (var j = 0; j < tabledata[i].certifications.length; j++) {
-                                  x += '<i>' + tabledata[i].certifications[j] + '</i> ' + '<br>'
+                                  if (tabledata[i].certifications[j] != "NA") {
+                                    x += '<i>' + tabledata[i].certifications[j] + '</i> ' + '<br>';
+                                  }
                                 }
                           tabledata.push(
                              html = '<tr>'+
+                                '<td>'+ tabledata[i].empId + '</td>' +
                                 '<td>'+ tabledata[i].Firstname + '</td>' +
                                 '<td>'+ tabledata[i].Lastname + '</td>' +
                                 '<td>'+ tabledata[i].email + '</td>' +
-                                '<td>'+ tabledata[i].empId + '</td>' +
                                 '<td>'+ x + '</td>' +
+                                '<td>'+ '<i class="fa fa-file">' + '</i>' + '</td>' +
                               '</tr>' 
                                
 
@@ -71,38 +74,6 @@
                             );
                             $("#tbody").append(html)
                         }
-
-                         /*'<tr>'+
-                                '<td>'+ tabledata[i].Lirstname + '</td>' +
-                              '</tr>' +
-                              '<tr>'+
-                                '<td>'+ tabledata[i].empId + '</td>' +
-                              '</tr>' +
-                              '<tr>'+
-                                '<td>'+ tabledata[i].email + '</td>' +
-                              '</tr>'+
-                              '<tr>'+
-                                '<td>'+ tabledata[i].AWS + '</td>' +
-                              '</tr>'+
-                              '<tr>'+
-                                '<td>'+ tabledata[i].Azure + '</td>' +
-                              '</tr>'+
-                              '<tr>'+
-                                '<td>'+ tabledata[i].Gcp + '</td>' +
-                              '</tr>'+
-                              '<tr>'+
-                              '<td>'+ tabledata[i].Other_certi + '</td>' +
-                              '</tr>'*/
-
-
-                        // self.empId(data.Item.empId) 
-                        // self.email(data.Item.email)  
-                        // self.Firstname(data.Item.Firstname)
-                        // self.Lastname(data.Item.Lastname)
-                        // self.AWS(data.Item.AWS)
-                        // self.Azure(data.Item.Azure)
-                        // self.Gcp(data.Item.Gcp)
-                        // self.Other_certi(data.Item.Other_certi)
                     }
                 }).fail(
                     
@@ -237,31 +208,32 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
+          <span data-bind="click: $root.getCustomerDetails()"></span>
           <h1 class="h3 mb-4 text-gray-800">Tables</h1>
           </script>
-          <table  id="example" class="table table-striped table-bordered " style="width:100%" data-bind="click: $root.getCustomerDetails()">
+          <table   class="table table-striped table-bordered " style="width:100%" >
             <thead>
                 <tr >
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                    <th>empId</th>
-                    <th>Certifications</th>
-                    
+                  <th>empId</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>                  
+                  <th>Certifications</th>
+                  <th>Report</th>             
 
                 </tr>
             </thead>
             <tbody id="tbody">
                 
             </tbody>
-           <!--  <tfoot>
+            <!-- <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                  <th>empId</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Email</th>
+                  <th>Certifications</th>
+                  <th>Report</th>
                 </tr>
             </tfoot> -->
         </table>

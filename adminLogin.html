@@ -18,6 +18,76 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+  <script src="jquery-3.1.1.min.js"></script>
+  <script src="knockout-3.4.2.js"></script>
+
+
+  <script type="text/javascript">
+    
+
+  /*jQuery.support.cors = true;
+  */
+    $(document).ready(function() {
+
+        var customerDetailsViewModel = function() {
+        var self = this;
+    
+        self.email = ko.observable("");
+        self.empId = ko.observable("");
+        self.SuccessMessage = ko.observable("");
+        self.password = ko.observable("");
+    
+    self.SaveCustomerDetails = function () {              
+        
+      var CustomerDetail = {
+      
+      email: self.email(),
+      empId: self.empId(),
+      password : self.password()
+      }
+      console.log(CustomerDetail);
+      $.ajax({
+        crossDomain: true,
+         url: 'https://7pxk7wfa6k.execute-api.ap-south-1.amazonaws.com/dev/login',
+        cache: false,
+        type: 'POST', 
+        contentType : 'application/json ; charset = utf-8',
+        data: ko.toJSON(CustomerDetail),
+        success: function (response) {
+            var x = response.value;
+            console.log(x);
+            if (x == "True") {
+              getInputValue();
+            }
+             
+          }
+            /*getInputValue();*/              
+           
+        
+        }).fail(
+        
+        function(xhr, textStatus, err){
+        alert("Error happened "+err);
+        
+            });
+        };
+    }
+
+        var viewModel = new customerDetailsViewModel();
+        ko.applyBindings(viewModel);
+     });
+
+   
+</script>
+<script type="text/javaScript">
+    
+    function getInputValue(){
+            // Selecting the input element and get its value 
+                window.location = "file:///C:/Users/ankit.thakur/Documents/UI/adminDashboard.html";
+
+           
+        }
+  </script>
 
 </head>
 
@@ -34,7 +104,7 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6 d-none d-lg-block " style="background: url(https://media-exp1.licdn.com/dms/image/C511BAQGZM2tX1b9qFw/company-background_10000/0?e=2159024400&v=beta&t=MELmRDHRD1EjzCf6rCUqWgCqme0ewmdcBvTxq8sZN78);"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -42,13 +112,16 @@
                   </div>
                   <form class="user" action="adminDashboard.html">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="email" class="form-control form-control-user" id="Email" data-bind="value : email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="Password" placeholder="Password">
+                      <input type="text" class="form-control form-control-user" id="empid" data-bind="value : empId" placeholder="EMployee ID">
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-warning" >Login</button>
+                      <input type="password" class="form-control form-control-user" id="Password" data-bind="value : password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-warning" data-bind="click : $root.SaveCustomerDetails">Login</button>
                       
                     </div>
                   </form>

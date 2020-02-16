@@ -17,11 +17,87 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <script src="jquery-3.1.1.min.js"></script>
+  <script src="knockout-3.4.2.js"></script>
+
+  <script type="text/javascript">
+    
+
+  /*jQuery.support.cors = true;
+  */
+    $(document).ready(function() {
+
+        var customerDetailsViewModel = function() {
+        var self = this;
+    
+        self.email = ko.observable("");
+        self.empId = ko.observable("");
+        self.SuccessMessage = ko.observable("");
+        self.password = ko.observable("");
+    
+    self.SaveCustomerDetails = function () {              
+        
+      var CustomerDetail = {
+      
+      email: self.email(),
+      empId: self.empId(),
+      password : self.password()
+      }
+      console.log(CustomerDetail);
+      $.ajax({
+        crossDomain: true,
+         url: 'https://7pxk7wfa6k.execute-api.ap-south-1.amazonaws.com/dev/login',
+        cache: false,
+        type: 'POST', 
+        contentType : 'application/json ; charset = utf-8',
+        data: ko.toJSON(CustomerDetail),
+        success: function (response) {
+            var x = response.value;
+            console.log(x);
+            if (x == "True") {
+              getInputValue();
+            }
+             
+          }
+            /*getInputValue();*/              
+           
+        
+        }).fail(
+        
+        function(xhr, textStatus, err){
+        alert("Error happened "+err);
+        
+            });
+        };
+    }
+
+        var viewModel = new customerDetailsViewModel();
+        ko.applyBindings(viewModel);
+     });
+
+   
+</script>
 
 </head>
 
 <body class="bg-gradient-primary">
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+  <script type="text/javaScript">
+    
+    function getInputValue(){
+            // Selecting the input element and get its value 
+                window.location = "file:///C:/Users/ankit.thakur/Documents/UI/Dashboard.html";
+
+           
+        }
+  </script>
   <div class="container">
 
     <!-- Outer Row -->
@@ -39,15 +115,18 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Login Into Portal</h1>
                   </div>
-                  <form class="user" action="Dashboard.html">
-                    <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                  <form class="user">
+                    <div class="form-group" >
+                      <input type="email" class="form-control form-control-user" data-bind="value : email" id="Email" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="Password" placeholder="Password">
+                      <input type="text" class="form-control form-control-user" data-bind="value : empId" aria-describedby="emailHelp" placeholder="Enter Employee Id...">
                     </div>
                     <div class="form-group">
-                      <button class="btn btn-primary" onclick="getInputValue()">Login</button>
+                      <input type="password" class="form-control form-control-user" data-bind="value : password" id="Password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary submit" data-bind="click : $root.SaveCustomerDetails">Login</button>
                       
                     </div>
                   </form>
@@ -70,31 +149,13 @@
 
   </div>
 
-  <script>
-    
-    function getInputValue(){
-            // Selecting the input element and get its value 
-            var email = document.getElementById("Email").value;
-            var pwd = document.getElementById("Password").value;
-            if(email == "ankit.thakur@blazeclan.com" && pwd == "123456") {
-                window.location.href="file:///C:/Users/ankit.thakur/Documents/UI/Dashboard.html"
-            }
-            else
-            {
-              alert('Invalid username or password.');
-            }
-        }
-  </script>
+  
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script type="text/javascript">
+   
+  </script>
+  
 
 </body>
 
