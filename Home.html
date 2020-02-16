@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NewBiz Bootstrap Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="home/img/favicon.png" rel="icon">
+  <link href="home/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="home/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="home/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="home/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="home/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="home/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="home/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="home/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: NewBiz
+    Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <a href="#intro" class="scrollto"><img src="data:image/png;base64,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  " alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="Login.html">Login</a></li>
+          <!-- <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li>
+          <li class="drop-down"><a href="">Drop Down</a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="drop-down"><a href="#">Drop Down 2</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="#">Drop Down 5</a></li>
+            </ul>
+          </li> -->
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+      <div class="intro-img">
+        <img src="home/img/intro-img.svg" alt="" class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+        <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+        <div>
+          <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          <a href="#why-us" class="btn-services scrollto">Our Achievements</a>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- #intro -->
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+     <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>About Us</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </header>
+
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fa fa-photo"></i></div>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <img src="home/img/about-img.svg" class="img-fluid" alt="">
+          </div>
+        </div>
+
+      </div>
+    </section> <!-- #about -->
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <!-- <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Services</h3>
+          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+        </header>
+
+        <div class="row">
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-world-outline" style="color: #d6ff22;"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-clock-outline" style="color: #4680ff;"></i></div>
+              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> --><!-- #services -->
+
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Why choose us?</h3>
+          <p>We are the artists who spin magic with technology and in the remaining time , we passionately ... There are many exciting and innovating career options here.</p>
+        </header>
+
+        <div class="row row-eq-height justify-content-center">
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-diamond"></i>
+              <div class="card-body">
+                <h2 class="card-title"><span data-toggle="counter-up">8</span></h2>
+                <p class="card-text">Gcp Certified Professionals.</p>
+                <a href="Login.html" class="readmore">View all </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-language"></i>
+              <div class="card-body">
+                <h2 class="card-title"><span data-toggle="counter-up">21</span></h2>
+                <p class="card-text">Azure Certified Professionals</p>
+                <a href="Login.html" class="readmore">View all </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+                <i class="fa fa-object-group"></i>
+              <div class="card-body">
+                <h2 class="card-title"><span data-toggle="counter-up">245</span></h2>
+                <p class="card-text">AWS Certified Professionals.</p>
+                <a href="Login.html" class="readmore">View all </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+       <!--  <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">245</span>
+            <p></p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            
+            <p>Azure Certified Professionals</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            
+            <p>Gcp Certified Professionals</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-toggle="counter-up">4</span>
+            <p>Bussiness Units</p>
+          </div>
+  
+        </div> -->
+
+      </div>
+    </section>
+
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <!-- <section id="portfolio" class="clearfix">
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">Our Portfolio</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/app1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">App 1</a></h4>
+                <p>App</p>
+                <div>
+                  <a href="img/portfolio/app1.jpg" data-lightbox="portfolio" data-title="App 1" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/web3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Web 3</a></h4>
+                <p>Web</p>
+                <div>
+                  <a href="img/portfolio/web3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/app2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">App 2</a></h4>
+                <p>App</p>
+                <div>
+                  <a href="img/portfolio/app2.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/card2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Card 2</a></h4>
+                <p>Card</p>
+                <div>
+                  <a href="img/portfolio/card2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/web2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Web 2</a></h4>
+                <p>Web</p>
+                <div>
+                  <a href="img/portfolio/web2.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/app3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">App 3</a></h4>
+                <p>App</p>
+                <div>
+                  <a href="img/portfolio/app3.jpg" class="link-preview" data-lightbox="portfolio" data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/card1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Card 1</a></h4>
+                <p>Card</p>
+                <div>
+                  <a href="img/portfolio/card1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card" data-wow-delay="0.1s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/card3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Card 3</a></h4>
+                <p>Card</p>
+                <div>
+                  <a href="img/portfolio/card3.jpg" class="link-preview" data-lightbox="portfolio" data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
+            <div class="portfolio-wrap">
+              <img src="home/img/portfolio/web1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4><a href="#">Web 1</a></h4>
+                <p>Web</p>
+                <div>
+                  <a href="img/portfolio/web1.jpg" class="link-preview" data-lightbox="portfolio" data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> --><!-- #portfolio -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <!-- <section id="testimonials" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Testimonials</h3>
+        </header>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+
+            <div class="owl-carousel testimonials-carousel wow fadeInUp">
+    
+              <div class="testimonial-item">
+                <img src="home/img/testimonial-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                </p>
+              </div>
+    
+              <div class="testimonial-item">
+                <img src="home/img/testimonial-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+                <p>
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                </p>
+              </div>
+    
+              <div class="testimonial-item">
+                <img src="home/img/testimonial-3.jpg" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+                <p>
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                </p>
+              </div>
+    
+              <div class="testimonial-item">
+                <img src="home/img/testimonial-4.jpg" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+                <p>
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                </p>
+              </div>
+    
+              <div class="testimonial-item">
+                <img src="home/img/testimonial-5.jpg" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+                <p>
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
+    </section> --><!-- #testimonials -->
+
+    <!--==========================
+      Team Section
+    ============================-->
+   <!--  <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <h3>Team</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp">
+            <div class="member">
+              <img src="home/img/team-1.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Walter White</h4>
+                  <span>Chief Executive Officer</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="member">
+              <img src="home/img/team-2.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Sarah Jhonson</h4>
+                  <span>Product Manager</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="member">
+              <img src="home/img/team-3.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>William Anderson</h4>
+                  <span>CTO</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="member">
+              <img src="home/img/team-4.jpg" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> --><!-- #team -->
+
+    <!--==========================
+      Clients Section
+    ============================-->
+    <section id="clients" class="section-bg">
+
+      <div class="container">
+
+        <div class="section-header">
+          <h3>Our CLients</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dere santome nida.</p>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-1.png" class="img-fluid" alt="">
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-2.png" class="img-fluid" alt="">
+            </div>
+          </div>
+        
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-3.png" class="img-fluid" alt="">
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-4.png" class="img-fluid" alt="">
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-5.png" class="img-fluid" alt="">
+            </div>
+          </div>
+        
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-6.png" class="img-fluid" alt="">
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-7.png" class="img-fluid" alt="">
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <div class="client-logo">
+              <img src="home/img/clients/client-8.png" class="img-fluid" alt="">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <!-- <section id="contact">
+      <div class="container-fluid">
+
+        <div class="section-header">
+          <h3>Contact Us</h3>
+        </div>
+
+        <div class="row wow fadeInUp">
+
+          <div class="col-lg-6">
+            <div class="map mb-4 mb-lg-0">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-5 info">
+                <i class="ion-ios-location-outline"></i>
+                <p>A108 Adam Street, NY 535022</p>
+              </div>
+              <div class="col-md-4 info">
+                <i class="ion-ios-email-outline"></i>
+                <p>info@example.com</p>
+              </div>
+              <div class="col-md-3 info">
+                <i class="ion-ios-telephone-outline"></i>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+
+            <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section> --><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <!-- <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>NewBiz</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit"  value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Cloudvengers</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
+        -->
+        Designed by <a href="https://bootstrapmade.com/">Team Rudra</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  <!-- JavaScript Libraries -->
+  <script src="home/lib/jquery/jquery.min.js"></script>
+  <script src="home/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="home/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="home/lib/easing/easing.min.js"></script>
+  <script src="home/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="home/lib/wow/wow.min.js"></script>
+  <script src="home/lib/waypoints/waypoints.min.js"></script>
+  <script src="home/lib/counterup/counterup.min.js"></script>
+  <script src="home/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="home/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="home/lib/lightbox/js/lightbox.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="home/contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="home/js/main.js"></script>
+
+</body>
+</html>

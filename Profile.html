@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Cloudvengers</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <script src="jquery-3.1.1.min.js"></script>
+  <script src="knockout-3.4.2.js"></script>
+  <script type="text/javascript">
+    
+
+  jQuery.support.cors = true;
+  
+    $(document).ready(function() {
+
+        var customerDetailsViewModel = function() {
+        var self = this;
+    
+              self.empId = ko.observable("");
+              self.certifications=ko.observable("");
+              self.SuccessMessage = ko.observable("")
+          
+          self.SaveCustomerDetails = function () {              
+                  
+            var CustomerDetail = {
+            
+            empId: self.empId(),
+            values: [self.certifications()]
+            }
+            console.log(CustomerDetail);
+            
+            $.ajax({
+              crossDomain: true,
+                url: ' https://7pxk7wfa6k.execute-api.ap-south-1.amazonaws.com/dev/methods',
+                cache: false,
+                type: 'PUT', 
+                contentType : 'application/json ; charset = utf-8',
+                data: ko.toJSON(CustomerDetail),
+                success: function (data) {              
+                    self.SuccessMessage(data)
+                  self.empId('');
+                  self.certifications('');
+              }
+                })/*.fail(
+                
+                function(xhr, textStatus, err){
+                alert("Error happened "+err);
+                
+                    });*/
+              };
+          }
+
+              var viewModel = new customerDetailsViewModel();
+              ko.applyBindings(viewModel);
+      });
+
+   
+</script>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="JavaScript:void(0)">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Blaze <sup>2</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="Dashboard.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Profile
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="JavaScript:void(0)">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="MyTables.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tables</span>
+        </a>
+        
+      </li>
+
+    
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="https://media-exp1.licdn.com/dms/image/C510BAQFLjIs6DhKY-w/company-logo_200_200/0?e=2159024400&v=beta&t=w_KALe0HT76HNQQFgrl_c0b_2s0gcNSezswgMQLqlEU">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="Profile.html">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="MyTables.html">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Tables
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">My Profile</h1>
+          <div class="container emp-profile">
+              <form method="post">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="profile-img">
+                              <img src="data:image/jpeg;base64,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" alt=""/>
+                              <div class="file btn btn-lg btn-primary">
+                                  Change Photo
+                                  <input type="file" name="file"/>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="profile-head">
+                                      <h5>
+                                          Ankit Thakur
+                                      </h5>
+                                      <h6>
+                                          Full Stack Developer
+                                      </h6>
+                                      <p class="proile-rating">RANKINGS : <span>10/10</span></p>
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                  </li>
+                              </ul>
+
+                          </div>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editCertiModal">
+                            <span class="fa fa-edit "></span>
+                          </a>
+                      </div>
+                      <div class="col-md-2">
+                          <!-- <input type="submit" class="btn btn-primary" name="btnAddMore" value="Edit Profile"/> -->
+                          <input type="button" class="btn btn-primary" name="btnAddCerti" data-toggle="modal" data-target="#addCertiModal" value="Add Certifications"/>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                          
+                      </div>
+                      <div class="col-md-8">
+                          <div class="tab-content profile-tab" id="myTabContent">
+                              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>User Id</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Ankit193</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Name</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Ankit Thakur</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Email</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>ankit@gmail.com</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Phone</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>123 456 7890</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Profession</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Full Stack Developer</p>
+                                              </div>
+                                          </div>
+                              </div>
+                              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Experience</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Expert</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>AWS Certifications :</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>100$/hr</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Azure :</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>2300</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>GCP Certifications :</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Expert</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Other : </label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>1 months</p>
+                                              </div>
+                                          </div>
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <label>Your Bio</label><br/>
+                                          <p>Your detail description</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </form>           
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Cloudvengers Jan 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="Home.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Edit Modal-->
+  <div class="modal fade" id="editCertiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Certifications</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="signup-form">
+              <form  class="dataform" method="post">
+                  <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-6"><input type="text" class="form-control" placeholder="First Name"   required="required"></div>
+                  <div class="col-xs-6"><input type="text" class="form-control" placeholder="Last Name"  required="required"></div>
+                </div>          
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Employee Id"  required="required">
+                  </div>
+              <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email"  required="required">
+                  </div>
+              <div class="form-group">
+                      <input type="text" class="form-control" placeholder="AWS Certifications"required="required">
+
+                  </div>
+              <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Azure Certifications"  required="required">
+                  </div>   
+                  <div class="form-group">
+                      <input type="text" class="form-control" placeholder="GCP Certifications" required="required">
+                  </div>
+              <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Other Certifications"  required="required">
+                  </div>
+                  <!-- <span style ="color: darkolivegreen" data-bind='text : SuccessMessage' />
+           -->    <!-- <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.SaveCustomerDetails">Send</button>
+                  </div> -->
+              </form>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Certification Modal-->
+  <div class="modal fade" id="addCertiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Certifications</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <div class="signup-form">
+              <form  class="dataform" method="post">
+                  
+                <div class="row">
+                </div>          
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Employee Id" data-bind='value: empId' required="required">
+                  </div>
+              <div class="form-group"> 
+                      <select id="sel1" class="form-control mb-4" onchange="giveSelection(this.value)">
+                        <option value="none" selected disabled hidden> 
+                            Select your certification 
+                        </option> 
+
+
+                        <option value="a" >AWS</option>
+                        <option value="b">Azure</option>
+                         <option value="c">Gcp</option>
+                         <option value="d">Other</option>
+                      </select>
+                      <select id="sel2" class="form-control" data-bind="value : certifications" >
+                        <option value="none" data-option="a" selected disabled hidden> 
+                            Select AWS certification 
+                        </option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified Solutions Architect - Associative</option>
+                        <option data-option="a" data-bind="value : certifications">AWS Certified Developer - Associative</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified SysOps Administrator - Associative</option>
+                        <option data-option="a" data-bind="value : certifications">AWS Certified Solutions Architect - Professional</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified DevOps Engineer - Professional</option>
+                        <option data-option="a" data-bind="value : certifications">AWS Certified Security</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified Big Data</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified Advanced Networking</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified Machine Learning</option>
+                        <option data-option="a" data-bind="value: certifications">AWS Certified Alexa Skill Builder</option>
+                        <option data-option="a" data-bind="value : certifications">AWS Certified Cloud Practitioner - Foundational</option>
+                        
+
+                        <option data-option="b" data-bind="value: certifications"> Azure – Fundamentals Exam AZ-900</option>
+                        <option data-option="b" data-bind="value: certifications"> Azure Administrator – Associate Exam AZ-103</option>
+                        <option data-option="b" data-bind="value: certifications"> Azure Developer – Associate Exam AZ-203</option>
+                        <option data-option="b" data-bind="value: certifications"> Azure Security Engineer – Associate Exam AZ-500</option>
+                        <option data-option="b" data-bind="value: certifications"> Azure AI Engineer – Associate Exam AI-100</option>
+                        <option data-option="b" data-bind="value: certifications"> Azure Data Scientist – Associate Exam DP-100</option>
+                        <option data-option="b" data-bind="value: certifications">Azure Data Engineer – Associate Exams DP-200 and DP-201</option>
+                        <option data-option="b" data-bind="value: certifications">Solutions Architect – Expert Exams AZ-300 and AZ-301</option>
+                        <option data-option="b" data-bind="value: certifications">Azure DevOps Engineer – Expert Exam AZ-400</option>
+                        <option value="none" data-option="b" selected disabled hidden> 
+                            Select Azure certification 
+                        </option>
+                        
+                        <option data-option="c" data-bind="value: certifications">Associate: Cloud Engineer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud Architect</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud Developer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Data Engineer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud DevOps Engineer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud Security Engineer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud Network Engineer</option>
+                        <option data-option="c" data-bind="value: certifications">Professional: Cloud DevOps Engineer</option>
+                        <option value="none" data-option="c" selected disabled hidden> 
+                            Select Gcp certification 
+                        </option>
+
+
+                      </select>
+
+                  </div>
+
+           <div class="form-group">
+                      <button type="submit" class="btn btn-primary btn-lg" data-bind="click: $root.SaveCustomerDetails" data-dismiss="modal">Send</button>
+                  </div>
+              </form>
+            <!-- <div class="hint-text">Already have an account? <a href="#">Login here</a></div> -->
+          </div>
+          <script type="text/javascript">
+            var sel1 = document.querySelector('#sel1');
+            var sel2 = document.querySelector('#sel2');
+            var options2 = sel2.querySelectorAll('option');
+
+            function giveSelection(selValue) {
+              sel2.innerHTML = '';
+              for(var i = 0; i < options2.length; i++) {
+                if(options2[i].dataset.option === selValue) {
+                  sel2.appendChild(options2[i]);
+                }
+              }
+            }
+
+            giveSelection(sel1.value);
+          </script>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
